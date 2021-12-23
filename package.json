@@ -1,0 +1,10 @@
+{
+  "name": "github-rate-limit-cron",
+  "version": "1.0.0",
+  "description": "GitHub Bots rate limit Cron",
+  "main": "index.js",
+  "repository": "https://github.com/Shehanka/github-rate-limit-cron.git",
+  "author": "Chamod Shehanka (chamodp@wso2.com)",
+  "license": "MIT",
+  "private": true
+}

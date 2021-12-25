@@ -1,21 +1,29 @@
 import { Octokit } from "@octokit/rest";
 
-export interface RateLimit {}
+export interface RateItem {
+  limit: number;
+  used: number;
+  remaining: number;
+  reset: number;
+}
+export interface RateLimit {
+  resources: {
+    core: RateItem;
+    search: RateItem;
+    graphql: RateItem;
+    integration_manifest: RateItem;
+    source_import: RateItem;
+    code_scanning_upload: RateItem;
+    actions_runner_registration: RateItem;
+    scim: RateItem;
+  };
+  rate: RateItem;
+}
 
 export async function getGitBotRateLimit(gitToken: string): Promise<RateLimit> {
   const octokit: Octokit = new Octokit({ auth: gitToken });
-
   const res = await octokit.request("GET /rate_limit");
 
-  return res.data;
-  //   const PATH = ``;
-  //   try {
-  //     const res = await Axios.default.get(PATH, {
-  //       headers: {},
-  //     });
+  return res.data as RateLimit;
 
-  //     return res.data as RateLimit;
-  //   } catch (e) {
-  //     console.error("GitHub Rate Limit Get Failed : ", e.message);
-  //   }
 }

@@ -4,6 +4,7 @@ import yaml from "js-yaml";
 
 export interface AppConfig {
   port: number;
+  googleChatWebhookURL: string;
   githubBotTokens: [];
 }
 
